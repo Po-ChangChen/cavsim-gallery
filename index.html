@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Resonators at Work</title>
+<meta name="description" content="THz split-ring and complementary split-ring resonators in motion: real 3D geometry and fields computed with the cavsim finite-element solver.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: one reading column; the flagship clip leads, the rest follow as a two-up grid that stacks on phones. */
+:root{
+  --bg:#f5f6f4; --fg:#1b2024; --muted:#5c666d; --line:#d9dedc; --gold:#a8781f; --field:#2f6f8f;
+  --display:"Fraunces", Georgia, "Times New Roman", serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#0e1418; --fg:#e7ebec; --muted:#9aa6ac; --line:#26323a; --gold:#d6a64a; --field:#6fb3d2; color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.wrap{max-width:1040px;margin:0 auto;padding-block:40px 64px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));
+  display:flex;flex-direction:column;gap:36px}
+header{display:flex;flex-direction:column;gap:10px;max-width:68ch}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:var(--display);font-weight:650;font-size:clamp(30px,5vw,44px);line-height:1.08;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:500;font-size:20px;line-height:1.25;margin:0;text-wrap:balance}
+p{margin:0}
+.lede{color:var(--muted);font-size:16px}
+figure{margin:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+video{width:100%;max-width:100%;aspect-ratio:16/9;background:#000;border-radius:6px;display:block}
+.flag video{border:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 28px}
+@media (max-width:720px){.grid{grid-template-columns:1fr}}
+figcaption{display:flex;flex-direction:column;gap:4px}
+figcaption p{color:var(--muted);max-width:62ch}
+.meta{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--field)}
+footer{border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:13px;max-width:76ch;display:flex;flex-direction:column;gap:8px}
+footer ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+a{color:var(--field)}
+a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">THz metamaterial cavities · UCLA</span>
+    <h1>Resonators at work</h1>
+    <p class="lede">Each clip comes from cavsim, a finite-element solver for periodic THz metamaterials: the real 3D gold geometry, and the field it computes when THz light hits the array. The animation is slowed down; one cycle of the light lasts about one picosecond.</p>
+  </header>
+
+  <figure class="flag">
+    <span class="tag">Flagship</span>
+    <video controls playsinline loop muted preload="metadata" src="videos/t4v2_yang_breathing.mp4" aria-label="Two-C gold resonator breathing with the light"></video>
+    <figcaption>
+      <h2>The resonator breathes with the light</h2>
+      <p>A two-C gold quasi-BIC resonator [1] at its computed resonance near 0.99 THz. Red and blue are the electric field just above the gold, swapping sign every half cycle. Then nine copies show the whole array oscillating in step.</p>
+      <span class="meta">Geometry from [1] · coarse mesh, 42,530 tetrahedra · steady-state field, display slowed · field convergence not yet verified</span>
+    </figcaption>
+  </figure>
+
+  <div class="grid">
+    <figure>
+      <video controls playsinline loop muted preload="metadata" src="videos/04_geometry.mp4" aria-label="What the simulation models"></video>
+      <figcaption>
+        <h2>What the simulation models</h2>
+        <p>A complementary split-ring resonator [2], built from the solver's own geometry: one periodic cell standing in for an infinite array, with light coming in from the top.</p>
+        <span class="meta">Geometry from [2] · 225 nm Au on GaAs</span>
+      </figcaption>
+    </figure>
+    <figure>
+      <video controls playsinline loop muted preload="metadata" src="videos/t4v2_shape_series.mp4" aria-label="Changing the size moves the resonance"></video>
+      <figcaption>
+        <h2>Change the shape, move the resonance</h2>
+        <p>The two-C resonator [1] at its eight published sizes. Bigger rings resonate at lower frequency. Only computed sizes are shown; transitions fade between real frames.</p>
+        <span class="meta">Scale 0.7 → 1.4 · bare gold on quartz · coarse mesh</span>
+      </figcaption>
+    </figure>
+    <figure>
+      <video controls playsinline loop muted preload="metadata" src="videos/06_field_to_spectrum.mp4" aria-label="From a field solution to a spectrum"></video>
+      <figcaption>
+        <h2>From a field to a spectrum</h2>
+        <p>How one point of a transmission spectrum is made: solve the field at one frequency, read how much light gets through, add the point, repeat.</p>
+        <span class="meta">Resonator from [1] · five computed frequencies, no interpolation</span>
+      </figcaption>
+    </figure>
+    <figure>
+      <video controls playsinline loop muted preload="metadata" src="videos/05_mesh.mp4" aria-label="The finite-element mesh"></video>
+      <figcaption>
+        <h2>The mesh</h2>
+        <p>The actual tetrahedral meshes, coarse and fine. Elements shrink near the gold, where the field changes fastest.</p>
+        <span class="meta">Resonator from [2] · 24,838 vs 47,773 tetrahedra</span>
+      </figcaption>
+    </figure>
+    <figure>
+      <video controls playsinline loop muted preload="metadata" src="videos/07_showcase.mp4" aria-label="Short showcase"></video>
+      <figcaption>
+        <h2>Showcase</h2>
+        <p>The short version, without the jargon: light hits a tiny gold pattern, the pattern rings, and one colour of light is blocked.</p>
+        <span class="meta">Resonator from [1] · for a general audience</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <footer>
+    <p>Coming next: split-ring and complementary split-ring resonators with surface currents flipping on the metal, and the same view of our NbOCl₂ cavity designs.</p>
+    <p>Geometries are taken from published work; the fields and spectra are our own calculations, not the authors' data.</p>
+    <ol>
+      <li>J. Yang, L. Zhang <i>et al.</i>, “Manipulating terahertz phonon-polariton in the ultrastrong coupling regime with bound states in the continuum,” <i>Light: Science &amp; Applications</i> <b>14</b>, 360 (2025). <a href="https://doi.org/10.1038/s41377-025-02044-0">doi:10.1038/s41377-025-02044-0</a></li>
+      <li>C. Maissen <i>et al.</i>, “Ultrastrong coupling in the near field of complementary split-ring resonators,” <i>Phys. Rev. B</i> <b>90</b>, 205309 (2014). <a href="https://doi.org/10.1103/PhysRevB.90.205309">doi:10.1103/PhysRevB.90.205309</a></li>
+    </ol>
+  </footer>
+</div>
+</body>
+</html>
