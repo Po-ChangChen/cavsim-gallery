@@ -61,7 +61,8 @@ a{color:var(--field)}
 a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .nav{display:flex;gap:18px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
 .nav a{text-decoration:none;color:var(--muted)} .nav a[aria-current]{color:var(--fg);border-bottom:1px solid var(--gold)}
-.summary{max-width:860px;margin:0 auto;gap:28px}
+.summary{max-width:1040px;margin:0 auto;gap:30px}
+.summary header,.summary .block{max-width:760px}
 .summary .lede{max-width:none}
 .block{display:flex;flex-direction:column;gap:10px}
 .block h2{font-size:22px}
@@ -69,9 +70,10 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
 .block li strong{color:var(--fg)}
 .fig{display:flex;flex-direction:column;gap:8px}
 .fig img{width:100%;height:auto;border-radius:6px;background:#fff;border:1px solid var(--line);display:block}
-.fig figcaption{display:block;color:var(--muted);font-size:14px}
+.fig figcaption{display:block;color:var(--muted);font-size:15px;max-width:760px}
 .fig figcaption b{color:var(--fg)}
 .figs{display:flex;flex-direction:column;gap:28px}
+.steps{counter-reset:s}
 .byline{font-family:var(--mono);font-size:12px;color:var(--muted)}
 @media print{
   :root{--bg:#fff;--fg:#111;--muted:#444;--line:#ccc}
@@ -82,9 +84,12 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
   h1{font-size:17pt} .block h2{font-size:12pt} .block{gap:4px} .block ul,.block ol{gap:3px}
   .figs{flex-direction:row;gap:12px;align-items:flex-start}
   .fig{flex:1 1 0;break-inside:avoid;gap:4px}
-  .fig img{border:none}
+  .fig img{border:none;width:66%;margin:0 auto}
+  .lede{font-size:10pt}
+  .summary{gap:6px}
+  .fig figcaption{max-width:none}
   .fig figcaption{font-size:8.5pt}
-  @page{size:letter;margin:0.5in}
+  @page{size:letter;margin:0.45in}
 }
 </style>
 </head>
@@ -94,38 +99,46 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
   <header>
     <span class="eyebrow">Vacuum-fluctuation project · simulation summary</span>
     <h1>Terahertz resonators for coupling to the NbOCl₂ ferron</h1>
-    <p class="byline">Po-Chang Chen · UCLA · November 2026</p>
-    <p class="lede">We design gold resonators that trap terahertz light at 4.8 THz, the frequency of the ferron (a collective lattice vibration) in the crystal NbOCl₂. The more of the resonator's field that reaches the crystal, the more strongly light and crystal interact, which is what lets us study the effect of vacuum fluctuations on this material.</p>
+    <p class="lede">We design gold resonators that trap terahertz light at 4.8 THz, the frequency of the ferron (a collective lattice vibration) in the crystal NbOCl₂. The more of the resonator's field that reaches the crystal, the more strongly light and crystal interact.</p>
   </header>
 
+  <section class="block" aria-labelledby="designs">
+    <h2 id="designs">Two designs, explored side by side</h2>
+    <p>We are developing two complementary resonators in parallel: a <strong>split ring (SRR)</strong>, a gold ring with one gap, and a <strong>slot ring (CSRR)</strong>, the inverse pattern cut as slots into a gold sheet. For each design we:</p>
+    <ol>
+      <li>size the pattern so it resonates at 4.8 THz;</li>
+      <li>map where its electric field is strongest;</li>
+      <li>decide where the crystal should sit and which substrate to use;</li>
+      <li>next, add the crystal and compute how strongly the two couple.</li>
+    </ol>
+  </section>
+
+  <figure class="fig">
+    <img src="images/two_designs.png" alt="Top views of the split ring and the slot ring, with the electric field shown in blue over the gold, and their transmission spectra; both dip or peak at the 4.8 THz target." loading="lazy">
+    <figcaption><b>Figure 1.</b> The two designs. (a, b) Electric field (darker blue is stronger) over each gold pattern at resonance: the split ring concentrates it in its single gap; the slot ring spreads it along its slots. (c) Both resonate at the 4.8 THz target.</figcaption>
+  </figure>
+
   <section class="block" aria-labelledby="outcome">
-    <h2 id="outcome">Outcome</h2>
+    <h2 id="outcome">What we found</h2>
     <ul>
-      <li><strong>Two designs on target.</strong> A split ring (SRR) and its slot-ring counterpart (CSRR) are both simulated to resonate at the 4.8 THz target.</li>
-      <li><strong>The crystal belongs in the gap (Fig. 1).</strong> The resonator's electric field is concentrated in the gap of the ring. A small dielectric patch there shifts the resonance about ten times more than the same patch anywhere else on the split ring, so the NbOCl₂ flake should sit over the gap.</li>
-      <li><strong>Sapphire is the best substrate (Fig. 2).</strong> Silicon or GaAs pull the resonance down by 4–11%. Even after resizing to 4.8 THz, they leave 7–17% less of the field in the crystal region. Of the alternatives, silicon is better than GaAs. The slot ring puts more of its field into the crystal than the split ring (12.6% vs 10.7% on sapphire).</li>
-      <li><strong>Higher-accuracy simulations.</strong> The calculations now run on UCLA's Hoffman2 computing cluster, which allows the finer detail needed for precise results.</li>
+      <li><strong>Both designs hit 4.8 THz.</strong> The split ring gives a sharp dip in transmission; the slot ring a broader peak.</li>
+      <li><strong>Put the crystal over the gap (Fig. 2a).</strong> On the split ring, the same piece of crystal shifts the resonance about ten times more when it sits over the gap (88 GHz) than beside the arm (8 GHz).</li>
+      <li><strong>Sapphire is the best substrate (Fig. 2b).</strong> It keeps the largest share of the field in the crystal region; silicon is the better alternative, GaAs the weakest.</li>
+      <li><strong>The slot ring reaches the crystal more.</strong> It places 12.6% of its field in the crystal region on sapphire, against 10.7% for the split ring.</li>
     </ul>
   </section>
 
-  <div class="figs">
   <figure class="fig">
-    <img src="images/dielectric_placement.png" alt="Left: a 3D sketch of the split ring with candidate dielectric patch positions. Right: resonance shift for each position; the gap gives by far the largest shift." loading="lazy">
-    <figcaption><b>Figure 1.</b> Where a dielectric sits on the split ring sets how far the resonance moves. Bars are estimates from the field without a patch; diamonds are full simulations, which confirm them. A higher-index patch in the gap moves the resonance by about 88 GHz; next to an arm, only about 8 GHz.</figcaption>
+    <img src="images/placement_and_substrate.png" alt="Left: resonance shift of 88 GHz with the crystal over the gap versus 8 GHz beside the arm. Right: field in the crystal region for both designs on sapphire, silicon and GaAs; sapphire highest." loading="lazy">
+    <figcaption><b>Figure 2.</b> (a) Resonance shift caused by the same small, higher-index patch placed over the gap or beside the arm of the split ring. (b) Share of the electric field inside the crystal region for both designs, each resized to 4.8 THz on three substrates.</figcaption>
   </figure>
-
-  <figure class="fig">
-    <img src="images/substrate_comparison.png" alt="Two bar charts for the SRR and CSRR designs: resonance shift relative to sapphire (about −4% on silicon and −11% on GaAs), and the electric energy in the crystal region after resizing, highest on sapphire." loading="lazy">
-    <figcaption><b>Figure 2.</b> Substrate comparison. (a) A higher-index substrate pulls the resonance down. (b) After resizing each design back to 4.8 THz, sapphire keeps the largest share of the electric field in the crystal region.</figcaption>
-  </figure>
-  </div>
 
   <section class="block" aria-labelledby="plan">
     <h2 id="plan">Next steps</h2>
     <ol>
-      <li>Add the NbOCl₂ flake and its ferron to the model and compute the vacuum-field strength and expected coupling for each design.</li>
-      <li>Select the final design and substrate, and provide fabrication dimensions.</li>
-      <li>Continue checking the simulations against published devices, and compare them with our own fabricated devices once measured.</li>
+      <li>Add the NbOCl₂ crystal and its ferron to both designs and compute the coupling strength.</li>
+      <li>Choose between the split ring and the slot ring, and provide fabrication dimensions.</li>
+      <li>Fabricate and measure, and compare with the simulations.</li>
     </ol>
   </section>
 
