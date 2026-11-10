@@ -56,6 +56,7 @@ footer ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
 .atwork{display:flex;flex-direction:column;gap:20px}
 .sec{display:flex;flex-direction:column;gap:6px;max-width:68ch}
 .sec h2{font-size:24px}
+.still img{width:100%;height:auto;border-radius:6px;background:#fff;display:block}
 a{color:var(--field)}
 a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 </style>
@@ -97,6 +98,24 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
       <figure>
         <video controls playsinline loop muted preload="metadata" src="videos/t4v2_nbo_srr_breathing.mp4" aria-label="NbOCl2 SRR design breathing"></video>
         <figcaption><h2>Our NbOCl₂ SRR design</h2><p>Our split-ring cavity for the same ferron: a square ring about 3.8 µm across. The strongest field sits in its single gap.</p><span class="meta">Our design prediction, coarse mesh · 4.90 THz</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="atwork">
+    <header class="sec"><span class="tag">Dielectric placement</span><h2>Where does a dielectric change the resonance most?</h2><p class="lede">We placed a small 1 × 1 µm dielectric patch at different spots on our NbOCl₂ split-ring design and asked how far the resonance moves. The answer: about ten times more in the gap than anywhere else, because that is where the electric field is concentrated.</p></header>
+    <figure class="still">
+      <img src="images/t8_placement_explainer.png" alt="Left: a 3D sketch of the split ring with possible dielectric patch positions labelled. Right: predicted resonance shift for each position; the gap gives by far the largest shift." loading="lazy">
+      <figcaption><p>Left: where a patch can go. Right: how far each placement moves the resonance (bars: quick estimate from the unmodified field; diamonds: full simulations of three cases). A higher-index patch (n = 3) in the gap pulls the resonance down by about 88 GHz; next to an arm, only about 8 GHz.</p><span class="meta">Our design prediction · ideal metal, no gold loss · not yet mesh-converged</span></figcaption>
+    </figure>
+    <div class="grid">
+      <figure>
+        <video controls playsinline loop muted preload="metadata" src="videos/t8_gap_vs_control.mp4" aria-label="Electric field without and with a dielectric patch in the gap"></video>
+        <figcaption><h2>The gap field, with and without a patch</h2><p>The electric field near the ring, oscillating in time. Left: no patch. Right: an n = 3 patch in the gap (dashed box). The field still concentrates in the gap, and the resonance shifts lower.</p><span class="meta">Our design · 5.00 vs 4.92 THz · ideal metal</span></figcaption>
+      </figure>
+      <figure class="still">
+        <img src="images/t8_spectra_and_shift.png" alt="Transmission dips for the control and three patch cases, and a bar chart comparing simulated shifts with the quick estimate." loading="lazy">
+        <figcaption><h2>Simulation checks the estimate</h2><p>Full simulations of three placements land within about 4% of the quick estimate for the gap, and about 22% for the weak near-arm placement.</p><span class="meta">Our design · four full spectra on one mesh</span></figcaption>
       </figure>
     </div>
   </section>
