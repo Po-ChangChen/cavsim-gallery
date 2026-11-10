@@ -10,3 +10,7 @@ calculations, not the authors' data. Each clip's provenance (source data, code c
 recorded in the cavsim project.
 
 Contents: `index.html` (the page) and `videos/` (H.264 MP4, 1080p, no audio).
+
+## Updating the summary
+
+`index.html` is a one-page summary (printed as `summary.pdf`); `details.html` has the animations. Writing rules and the update procedure are in the main project repository at `docs/PRESENTATION_GUIDE.md`. Rebuild the PDF with `node tools/build_pdf.js` (requires Playwright) and check it stays one page.

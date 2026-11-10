@@ -64,6 +64,10 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
 .summary{max-width:1040px;margin:0 auto;gap:30px}
 .summary header,.summary .block{max-width:760px}
 .summary .lede{max-width:none}
+.glance{display:grid;grid-template-columns:max-content 1fr;gap:6px 18px;margin:0;padding:14px 18px;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:6px;max-width:760px;background:color-mix(in srgb,var(--bg) 92%,var(--line))}
+.glance dt{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.glance dd{margin:0}
+@media (max-width:520px){.glance{grid-template-columns:1fr}.glance dd{margin-bottom:6px}}
 .block{display:flex;flex-direction:column;gap:10px}
 .block h2{font-size:22px}
 .block ul,.block ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
@@ -84,8 +88,10 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
   h1{font-size:17pt} .block h2{font-size:12pt} .block{gap:4px} .block ul,.block ol{gap:3px}
   .figs{flex-direction:row;gap:12px;align-items:flex-start}
   .fig{flex:1 1 0;break-inside:avoid;gap:4px}
-  .fig img{border:none;width:66%;margin:0 auto}
+  .fig img{border:none;width:60%;margin:0 auto}
   .lede{font-size:10pt}
+  .glance{padding:6px 10px;gap:2px 12px;background:none}
+  .glance dt{font-size:7.5pt}
   .summary{gap:6px}
   .fig figcaption{max-width:none}
   .fig figcaption{font-size:8.5pt}
@@ -102,14 +108,19 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
     <p class="lede">We design gold resonators that trap terahertz light at 4.8 THz, the frequency of the ferron (a collective lattice vibration) in the crystal NbOCl₂. The more of the resonator's field that reaches the crystal, the more strongly light and crystal interact.</p>
   </header>
 
+  <dl class="glance" aria-label="At a glance">
+    <dt>Goal</dt><dd>Couple terahertz light strongly to the NbOCl₂ crystal at 4.8 THz.</dd>
+    <dt>Status</dt><dd>Two resonator designs simulated and on target; crystal placement and substrate identified.</dd>
+    <dt>Next</dt><dd>Add the crystal to both designs and compute the coupling strength.</dd>
+  </dl>
+
   <section class="block" aria-labelledby="designs">
     <h2 id="designs">Two designs, explored side by side</h2>
     <p>We are developing two complementary resonators in parallel: a <strong>split ring (SRR)</strong>, a gold ring with one gap, and a <strong>slot ring (CSRR)</strong>, the inverse pattern cut as slots into a gold sheet. For each design we:</p>
     <ol>
       <li>size the pattern so it resonates at 4.8 THz;</li>
       <li>map where its electric field is strongest;</li>
-      <li>decide where the crystal should sit and which substrate to use;</li>
-      <li>next, add the crystal and compute how strongly the two couple.</li>
+      <li>decide where the crystal should sit and which substrate to use.</li>
     </ol>
   </section>
 
@@ -121,7 +132,6 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
   <section class="block" aria-labelledby="outcome">
     <h2 id="outcome">What we found</h2>
     <ul>
-      <li><strong>Both designs hit 4.8 THz.</strong> The split ring gives a sharp dip in transmission; the slot ring a broader peak.</li>
       <li><strong>Put the crystal over the gap (Fig. 2a).</strong> On the split ring, the same piece of crystal shifts the resonance about ten times more when it sits over the gap (88 GHz) than beside the arm (8 GHz).</li>
       <li><strong>Sapphire is the best substrate (Fig. 2b).</strong> It keeps the largest share of the field in the crystal region; silicon is the better alternative, GaAs the weakest.</li>
       <li><strong>The slot ring reaches the crystal more.</strong> It places 12.6% of its field in the crystal region on sapphire, against 10.7% for the split ring.</li>
