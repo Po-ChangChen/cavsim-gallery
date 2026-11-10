@@ -113,29 +113,15 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
         <video controls playsinline loop muted preload="metadata" src="videos/t8_gap_vs_control.mp4" aria-label="Electric field without and with a dielectric patch in the gap"></video>
         <figcaption><h2>The gap field, with and without a patch</h2><p>The electric field near the ring, oscillating in time. Left: no patch. Right: an n = 3 patch in the gap (dashed box). The field still concentrates in the gap, and the resonance shifts lower.</p><span class="meta">Our design · 5.00 vs 4.92 THz · ideal metal</span></figcaption>
       </figure>
-      <figure class="still">
-        <img src="images/t8_spectra_and_shift.png" alt="Transmission dips for the control and three patch cases, and a bar chart comparing simulated shifts with the quick estimate." loading="lazy">
-        <figcaption><h2>Simulation checks the estimate</h2><p>Full simulations of three placements land within about 4% of the quick estimate for the gap, and about 22% for the weak near-arm placement.</p><span class="meta">Our design · four full spectra on one mesh</span></figcaption>
-      </figure>
     </div>
   </section>
 
   <section class="atwork">
-    <header class="sec"><span class="tag">Key results</span><h2>Technical results behind the pictures</h2><p class="lede">Plots from the project reports, each with its caveats. These are our simulations; none is yet compared with a measured device.</p></header>
+    <header class="sec"><span class="tag">Substrate choice</span><h2>Sapphire, silicon or GaAs?</h2><p class="lede">A higher-index substrate pulls the resonance down (a). After resizing each design back to the 4.81 THz target, it also leaves less of the electric field in the flake region (b), which weakens the coupling. Sapphire is best; silicon is the better alternative to GaAs.</p></header>
     <figure class="still">
-      <img src="images/s2_substrate_comparison.png" alt="Four panels comparing sapphire, silicon and GaAs substrates for the SRR and CSRR designs: frequency shift, rescale residual, Q and flake filling fraction." loading="lazy">
-      <figcaption><h2>Which substrate? Sapphire, silicon or GaAs</h2><p>Swapping sapphire for a higher-index substrate pulls the resonance down (Si −4%, GaAs −11%) and, after resizing back to 4.81 THz, puts less of the field in the flake (Si −7%, GaAs −17%). Sapphire is best for coupling; silicon is the better of the two alternatives.</p><span class="meta">Our designs · coarse mesh · Q panel uses the earlier gold model, rerun pending</span></figcaption>
+      <img src="images/substrate_comparison.png" alt="Two bar charts for the SRR and CSRR designs. Left: resonance shift relative to sapphire, about −4% on silicon and −11% on GaAs. Right: electric energy in the flake region after resizing, highest on sapphire (10.7% and 12.6%), lower on silicon and lowest on GaAs." loading="lazy">
+      <figcaption><span class="meta">Our designs · coarse mesh · ideal-shape model, before fabrication</span></figcaption>
     </figure>
-    <div class="grid">
-      <figure class="still">
-        <img src="images/v1b_gold_model_fix.png" alt="Bar chart: absorbed power in a thin gold film before and after the solver fix, compared with the exact analytic value." loading="lazy">
-        <figcaption><h2>Finding and fixing a solver bug</h2><p>A check against an exact answer showed our thin-gold model absorbed 40–60% too little. After a one-line fix it agrees within 0.2%; results without gold loss are unchanged.</p><span class="meta">Verification against analytic theory · fix adopted</span></figcaption>
-      </figure>
-      <figure class="still">
-        <img src="images/t9b_memory.png" alt="Scatter of peak memory against mesh size for the SRR and CSRR runs, all well below the 12 GB limit." loading="lazy">
-        <figcaption><h2>Fitting accurate runs in memory</h2><p>By using symmetry and refining the mesh only near the gap, the finest CSRR mesh now needs under 5 GB, where the full cell needed over 10 GB. Its resonance frequency and Q stay within 0.2% on refinement.</p><span class="meta">Ideal metal · CSRR converged; SRR frequency within ≈0.3%</span></figcaption>
-      </figure>
-    </div>
   </section>
 
   <div class="grid">
