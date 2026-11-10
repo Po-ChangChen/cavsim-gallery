@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Resonators at Work</title>
-<meta name="description" content="THz split-ring and complementary split-ring resonators in motion: real 3D geometry and fields computed by finite-element simulation.">
+<title>THz Cavity Summary</title>
+<meta name="description" content="One-page summary: terahertz resonator designs for coupling to the 4.8 THz ferron of NbOCl₂ — key simulation results and next steps.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://po-changchen.github.io/cavsim-gallery/">
 <meta property="og:title" content="Resonators at Work">
-<meta property="og:description" content="THz split-ring and complementary split-ring resonators in motion: real 3D geometry and fields computed by finite-element simulation.">
+<meta property="og:description" content="One-page summary: terahertz resonator designs for coupling to the 4.8 THz ferron of NbOCl₂ — key simulation results and next steps.">
 <meta property="og:image" content="https://po-changchen.github.io/cavsim-gallery/og-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -59,122 +59,71 @@ footer ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
 .still img{width:100%;height:auto;border-radius:6px;background:#fff;display:block}
 a{color:var(--field)}
 a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.nav{display:flex;gap:18px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.nav a{text-decoration:none;color:var(--muted)} .nav a[aria-current]{color:var(--fg);border-bottom:1px solid var(--gold)}
+.summary{max-width:860px;margin:0 auto;gap:28px}
+.summary .lede{max-width:none}
+.block{display:flex;flex-direction:column;gap:10px}
+.block h2{font-size:22px}
+.block ul,.block ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.block li strong{color:var(--fg)}
+.fig{display:flex;flex-direction:column;gap:8px}
+.fig img{width:100%;height:auto;border-radius:6px;background:#fff;border:1px solid var(--line);display:block}
+.fig figcaption{color:var(--muted);font-size:14px}
+.fig figcaption b{color:var(--fg)}
+.byline{font-family:var(--mono);font-size:12px;color:var(--muted)}
+@media print{
+  :root{--bg:#fff;--fg:#111;--muted:#444;--line:#ccc}
+  body{font-size:10.5pt;line-height:1.4}
+  .nav,.more{display:none}
+  .wrap{padding:0;gap:12px;max-width:none}
+  h1{font-size:20pt} .block h2{font-size:13pt}
+  .fig img{max-height:2.7in;width:auto;max-width:100%;border:none}
+  .fig{break-inside:avoid}
+  @page{size:letter;margin:0.55in}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="wrap summary">
+  <nav class="nav" aria-label="Pages"><a href="./" aria-current="page">Summary</a><a href="details.html">Detailed results</a></nav>
   <header>
-    <span class="eyebrow">THz metamaterial cavities · UCLA</span>
-    <h1>Resonators at work</h1>
-    <p class="lede">Simulations of terahertz resonators: tiny gold patterns that trap light at one frequency. Each clip shows the real 3D geometry and the electric field computed when terahertz light hits the array, slowed down so a picosecond-scale oscillation becomes visible.</p>
+    <span class="eyebrow">Vacuum-fluctuation project · simulation summary</span>
+    <h1>Terahertz resonators for coupling to the NbOCl₂ ferron</h1>
+    <p class="byline">Po-Chang Chen · Hossain group, UCLA · November 2026</p>
+    <p class="lede">We are designing gold resonators that trap terahertz light at 4.8 THz, the frequency of the ferron (a collective lattice vibration) in the crystal NbOCl₂. The stronger the resonator's field inside the crystal, the stronger the coupling to the vacuum fluctuations we want to study.</p>
   </header>
 
-  <figure class="flag">
-    <span class="tag">Flagship</span>
-    <video controls playsinline loop muted preload="metadata" src="videos/t4v2_yang_breathing.mp4" aria-label="Two-C gold resonator breathing with the light"></video>
-    <figcaption>
-      <h2>The resonator breathes with the light</h2>
-      <p>A gold resonator made of two C-shapes [1], at its resonance near 0.99 THz. Red and blue show the electric field just above the gold, reversing every half cycle. Then nine copies show the whole array oscillating together.</p>
-      <span class="meta">Geometry from [1] · simulation</span>
-    </figcaption>
+  <section class="block" aria-labelledby="outcome">
+    <h2 id="outcome">Outcome</h2>
+    <ul>
+      <li><strong>Two designs on target.</strong> A split ring (SRR) and its slot-ring counterpart (CSRR) are both simulated to resonate at the 4.8 THz target.</li>
+      <li><strong>The crystal belongs in the gap (Fig. 1).</strong> The resonator's electric field is concentrated in the gap of the ring. A small dielectric patch there shifts the resonance about ten times more than the same patch anywhere else on the split ring, so the NbOCl₂ flake should sit over the gap.</li>
+      <li><strong>Sapphire is the best substrate (Fig. 2).</strong> Silicon or GaAs pull the resonance down by 4–11%. Even after resizing to 4.8 THz, they leave 7–17% less of the field in the crystal region. Of the alternatives, silicon is better than GaAs. The slot ring puts more of its field into the crystal than the split ring (12.6% vs 10.7% on sapphire).</li>
+      <li><strong>Accurate runs now feasible.</strong> Simulations run on UCLA's Hoffman2 cluster, which allows the fine meshes needed for converged results; we also corrected the model of gold losses.</li>
+    </ul>
+  </section>
+
+  <figure class="fig">
+    <img src="images/dielectric_placement.png" alt="Left: a 3D sketch of the split ring with candidate dielectric patch positions. Right: resonance shift for each position; the gap gives by far the largest shift." loading="lazy">
+    <figcaption><b>Figure 1.</b> Where a dielectric sits on the split ring sets how far the resonance moves. Bars are estimates from the field without a patch; diamonds are full simulations, which confirm them. A higher-index patch in the gap moves the resonance by about 88 GHz; next to an arm, only about 8 GHz.</figcaption>
   </figure>
 
+  <figure class="fig">
+    <img src="images/substrate_comparison.png" alt="Two bar charts for the SRR and CSRR designs: resonance shift relative to sapphire (about −4% on silicon and −11% on GaAs), and the electric energy in the crystal region after resizing, highest on sapphire." loading="lazy">
+    <figcaption><b>Figure 2.</b> Substrate comparison. (a) A higher-index substrate pulls the resonance down. (b) After resizing each design back to 4.8 THz, sapphire keeps the largest share of the electric field in the crystal region.</figcaption>
+  </figure>
 
-  <section class="atwork">
-    <header class="sec"><span class="tag">Resonators at work</span><h2>Current and field, reversing every half cycle</h2><p class="lede">Colour on the gold shows the electric current, with cyan arrows for its direction; red and blue show the field just above the metal. Each clip shows one resonator, then a 3 × 3 array.</p></header>
-    <div class="grid">
-      <figure>
-        <video controls playsinline loop muted preload="metadata" src="videos/t4v2_srr_at_work.mp4" aria-label="Split-ring resonator at work"></video>
-        <figcaption><h2>Split-ring resonator at work</h2><p>Charge piles up on one side of the gap, then the other, while current runs around the ring, like a tiny circuit of a coil and a capacitor.</p><span class="meta">Geometry from [2] · 0.49 THz · simulation</span></figcaption>
-      </figure>
-      <figure>
-        <video controls playsinline loop muted preload="metadata" src="videos/t4v2_csrr_at_work.mp4" aria-label="Complementary split-ring resonator at work"></video>
-        <figcaption><h2>Complementary split ring at work</h2><p>The inverse pattern: slots cut into a gold sheet. Current flows in the metal around the slots and the field lives in the gaps.</p><span class="meta">Geometry from [2] · 0.49 THz · simulation</span></figcaption>
-      </figure>
-      <figure>
-        <video controls playsinline loop muted preload="metadata" src="videos/t4v2_nbo_csrr_breathing.mp4" aria-label="NbOCl2 CSRR design breathing"></video>
-        <figcaption><h2>Our NbOCl₂ CSRR design</h2><p>Our resonator designed to match a 4.8 THz vibration of the crystal NbOCl₂: slots cut in gold on sapphire, shown before the crystal flake is added.</p><span class="meta">Our design · 4.81 THz · simulation</span></figcaption>
-      </figure>
-      <figure>
-        <video controls playsinline loop muted preload="metadata" src="videos/t4v2_nbo_srr_breathing.mp4" aria-label="NbOCl2 SRR design breathing"></video>
-        <figcaption><h2>Our NbOCl₂ SRR design</h2><p>Our split-ring design for the same vibration: a gold square about 3.8 µm across. The field is strongest in its single gap.</p><span class="meta">Our design · 4.90 THz · simulation</span></figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="atwork">
-    <header class="sec"><span class="tag">Dielectric placement</span><h2>Where does a dielectric change the resonance most?</h2><p class="lede">We placed a small 1 × 1 µm dielectric patch at different spots on our NbOCl₂ split-ring design and asked how far the resonance moves. The answer: about ten times more in the gap than anywhere else, because that is where the electric field is concentrated.</p></header>
-    <figure class="still">
-      <img src="images/dielectric_placement.png" alt="Left: a 3D sketch of the split ring with possible dielectric patch positions labelled. Right: predicted resonance shift for each position; the gap gives by far the largest shift." loading="lazy">
-      <figcaption><p>Left: the positions we compared. Right: how far each moves the resonance. Bars are a quick estimate; diamonds are full simulations, which confirm it. A higher-index patch in the gap moves the resonance by about 88 GHz; next to an arm, only about 8 GHz.</p><span class="meta">Our design · simulation</span></figcaption>
-    </figure>
-    <div class="grid">
-      <figure>
-        <video controls playsinline loop muted preload="metadata" src="videos/gap_dielectric_field.mp4" aria-label="Electric field without and with a dielectric patch in the gap"></video>
-        <figcaption><h2>The gap field, with and without a patch</h2><p>The electric field around the ring, oscillating in time, without and with a dielectric patch in the gap (dashed box). The field is concentrated in the gap, which is why a patch there has the largest effect.</p><span class="meta">Our design · 5.00 vs 4.92 THz · simulation</span></figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="atwork">
-    <header class="sec"><span class="tag">Substrate choice</span><h2>Sapphire, silicon or GaAs?</h2><p class="lede">A higher-index substrate pulls the resonance down (a). After resizing each design back to the 4.81 THz target, it also leaves less of the electric field in the flake region (b), which weakens the coupling. Sapphire is best; silicon is the better alternative to GaAs.</p></header>
-    <figure class="still">
-      <img src="images/substrate_comparison.png" alt="Two bar charts for the SRR and CSRR designs. Left: resonance shift relative to sapphire, about −4% on silicon and −11% on GaAs. Right: electric energy in the flake region after resizing, highest on sapphire (10.7% and 12.6%), lower on silicon and lowest on GaAs." loading="lazy">
-      <figcaption><span class="meta">Our designs · simulation</span></figcaption>
-    </figure>
-  </section>
-
-  <div class="grid">
-    <figure>
-      <video controls playsinline loop muted preload="metadata" src="videos/04_geometry.mp4" aria-label="What the simulation models"></video>
-      <figcaption>
-        <h2>What the simulation models</h2>
-        <p>A complementary split-ring resonator [2]: we simulate one repeating cell, which stands in for an infinite array, with light arriving from above.</p>
-        <span class="meta">Geometry from [2] · 225 nm Au on GaAs</span>
-      </figcaption>
-    </figure>
-    <figure>
-      <video controls playsinline loop muted preload="metadata" src="videos/t4v2_shape_series.mp4" aria-label="Changing the size moves the resonance"></video>
-      <figcaption>
-        <h2>Change the shape, move the resonance</h2>
-        <p>The two-C resonator [1] at its eight published sizes. Bigger rings resonate at lower frequency.</p>
-        <span class="meta">Size 0.7× to 1.4× · gold on quartz · simulation</span>
-      </figcaption>
-    </figure>
-    <figure>
-      <video controls playsinline loop muted preload="metadata" src="videos/06_field_to_spectrum.mp4" aria-label="From a field solution to a spectrum"></video>
-      <figcaption>
-        <h2>From a field to a spectrum</h2>
-        <p>How a spectrum is built: compute the field at one frequency, measure how much light gets through, plot the point, and repeat.</p>
-        <span class="meta">Resonator from [1] · simulation</span>
-      </figcaption>
-    </figure>
-    <figure>
-      <video controls playsinline loop muted preload="metadata" src="videos/05_mesh.mp4" aria-label="The finite-element mesh"></video>
-      <figcaption>
-        <h2>The mesh</h2>
-        <p>The simulation splits space into small tetrahedra. They are made smaller near the gold, where the field changes fastest; a finer mesh gives a more accurate answer.</p>
-        <span class="meta">Resonator from [2] · about 25,000 vs 48,000 elements</span>
-      </figcaption>
-    </figure>
-    <figure>
-      <video controls playsinline loop muted preload="metadata" src="videos/07_showcase.mp4" aria-label="Short showcase"></video>
-      <figcaption>
-        <h2>Showcase</h2>
-        <p>The short version, without the jargon: light hits a tiny gold pattern, the pattern rings, and one colour of light is blocked.</p>
-        <span class="meta">Resonator from [1]</span>
-      </figcaption>
-    </figure>
-  </div>
-
-  <footer>
-    <p>Coming next: side-by-side comparisons with published devices, and the NbOCl₂ resonators with the crystal flake added.</p>
-    <p>Geometries are taken from published work; the fields and spectra are our own calculations, not the authors' data.</p>
+  <section class="block" aria-labelledby="plan">
+    <h2 id="plan">Next steps</h2>
     <ol>
-      <li>J. Yang, L. Zhang <i>et al.</i>, “Manipulating terahertz phonon-polariton in the ultrastrong coupling regime with bound states in the continuum,” <i>Light: Science &amp; Applications</i> <b>14</b>, 360 (2025). <a href="https://doi.org/10.1038/s41377-025-02044-0">doi:10.1038/s41377-025-02044-0</a></li>
-      <li>C. Maissen <i>et al.</i>, “Ultrastrong coupling in the near field of complementary split-ring resonators,” <i>Phys. Rev. B</i> <b>90</b>, 205309 (2014). <a href="https://doi.org/10.1103/PhysRevB.90.205309">doi:10.1103/PhysRevB.90.205309</a></li>
+      <li>Add the NbOCl₂ flake and its ferron to the model and compute the vacuum-field strength and expected coupling for each design.</li>
+      <li>Select the final design and substrate, and provide fabrication dimensions.</li>
+      <li>Continue benchmarking the simulations against published devices, and compare with our fabricated devices once measured.</li>
     </ol>
-  </footer>
+  </section>
+
+  <p class="more meta"><a href="details.html">Detailed results and animations →</a></p>
 </div>
 </body>
 </html>
