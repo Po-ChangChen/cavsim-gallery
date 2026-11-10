@@ -120,6 +120,24 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
     </div>
   </section>
 
+  <section class="atwork">
+    <header class="sec"><span class="tag">Key results</span><h2>Technical results behind the pictures</h2><p class="lede">Plots from the project reports, each with its caveats. These are our simulations; none is yet compared with a measured device.</p></header>
+    <figure class="still">
+      <img src="images/s2_substrate_comparison.png" alt="Four panels comparing sapphire, silicon and GaAs substrates for the SRR and CSRR designs: frequency shift, rescale residual, Q and flake filling fraction." loading="lazy">
+      <figcaption><h2>Which substrate? Sapphire, silicon or GaAs</h2><p>Swapping sapphire for a higher-index substrate pulls the resonance down (Si −4%, GaAs −11%) and, after resizing back to 4.81 THz, puts less of the field in the flake (Si −7%, GaAs −17%). Sapphire is best for coupling; silicon is the better of the two alternatives.</p><span class="meta">Our designs · coarse mesh · Q panel uses the earlier gold model, rerun pending</span></figcaption>
+    </figure>
+    <div class="grid">
+      <figure class="still">
+        <img src="images/v1b_gold_model_fix.png" alt="Bar chart: absorbed power in a thin gold film before and after the solver fix, compared with the exact analytic value." loading="lazy">
+        <figcaption><h2>Finding and fixing a solver bug</h2><p>A check against an exact answer showed our thin-gold model absorbed 40–60% too little. After a one-line fix it agrees within 0.2%; results without gold loss are unchanged.</p><span class="meta">Verification against analytic theory · fix adopted</span></figcaption>
+      </figure>
+      <figure class="still">
+        <img src="images/t9b_memory.png" alt="Scatter of peak memory against mesh size for the SRR and CSRR runs, all well below the 12 GB limit." loading="lazy">
+        <figcaption><h2>Fitting accurate runs in memory</h2><p>By using symmetry and refining the mesh only near the gap, the finest CSRR mesh now needs under 5 GB, where the full cell needed over 10 GB. Its resonance frequency and Q stay within 0.2% on refinement.</p><span class="meta">Ideal metal · CSRR converged; SRR frequency within ≈0.3%</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
   <div class="grid">
     <figure>
       <video controls playsinline loop muted preload="metadata" src="videos/04_geometry.mp4" aria-label="What the simulation models"></video>
@@ -164,7 +182,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
   </div>
 
   <footer>
-    <p>Coming next: the same NbOCl₂ cavities with the flake, and their vacuum-field strength.</p>
+    <p>Coming next: validation against published devices on the corrected solver, then the NbOCl₂ cavities with the flake and their vacuum-field strength.</p>
     <p>Geometries are taken from published work; the fields and spectra are our own calculations, not the authors' data.</p>
     <ol>
       <li>J. Yang, L. Zhang <i>et al.</i>, “Manipulating terahertz phonon-polariton in the ultrastrong coupling regime with bound states in the continuum,” <i>Light: Science &amp; Applications</i> <b>14</b>, 360 (2025). <a href="https://doi.org/10.1038/s41377-025-02044-0">doi:10.1038/s41377-025-02044-0</a></li>
