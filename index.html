@@ -79,22 +79,27 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
 .figs{display:flex;flex-direction:column;gap:28px}
 .steps{counter-reset:s}
 .byline{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.checks{border-collapse:collapse;width:100%;max-width:760px;font-size:14px}
+.checks th,.checks td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+.checks th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.note{color:var(--muted);font-size:13px}
 @media print{
   :root{--bg:#fff;--fg:#111;--muted:#444;--line:#ccc}
-  body{font-size:9.5pt;line-height:1.35}
+  body{font-size:9.2pt;line-height:1.32}
   .nav,.more{display:none}
   .wrap{padding:0;gap:8px;max-width:none}
   header{gap:4px;max-width:none}
   h1{font-size:17pt} .block h2{font-size:12pt} .block{gap:4px} .block ul,.block ol{gap:3px}
   .figs{flex-direction:row;gap:12px;align-items:flex-start}
   .fig{flex:1 1 0;break-inside:avoid;gap:4px}
-  .fig img{border:none;width:60%;margin:0 auto}
+  .fig img{border:none;width:100%;margin:0 auto}
   .lede{font-size:10pt}
   .glance{padding:6px 10px;gap:2px 12px;background:none}
   .glance dt{font-size:7.5pt}
   .summary{gap:6px}
   .fig figcaption{max-width:none}
   .fig figcaption{font-size:8.5pt}
+  .checks{font-size:8.5pt} .checks th,.checks td{padding:2px 5px} .note{font-size:8pt}
   @page{size:letter;margin:0.45in}
 }
 </style>
@@ -109,46 +114,62 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
   </header>
 
   <dl class="glance" aria-label="At a glance">
-    <dt>Goal</dt><dd>Couple terahertz light strongly to the NbOCl₂ crystal at 4.8 THz.</dd>
-    <dt>Status</dt><dd>Two resonator designs simulated near the 4.8 THz target; the crystal goes over the gap; silicon or sapphire both work.</dd>
-    <dt>Next</dt><dd>Add the crystal to both designs and compute the coupling strength.</dd>
+    <dt>Goal</dt><dd>Couple terahertz light strongly to the NbOCl₂ crystal at 4.8 THz, using a resonator chip we can build and measure.</dd>
+    <dt>Status</dt><dd>Two resonator designs sized to 4.8 THz and checked against published data. First crystal-plus-resonator simulations show the expected splitting. Device stack defined.</dd>
+    <dt>Next</dt><dd>Simulate the full stack versus the resonator–crystal gap, confirm the coupling, and fix fabrication dimensions.</dd>
   </dl>
 
   <section class="block" aria-labelledby="designs">
-    <h2 id="designs">Two designs, explored side by side</h2>
-    <p>We are developing two complementary resonators in parallel: a <strong>split ring (SRR)</strong>, a gold ring with one gap, and a <strong>slot ring (CSRR)</strong>, the inverse pattern cut as slots into a gold sheet. For each design we:</p>
-    <ol>
-      <li>size the pattern so it resonates at 4.8 THz;</li>
-      <li>map where its electric field is strongest;</li>
-      <li>decide where the crystal should sit and which substrate to use.</li>
-    </ol>
+    <h2 id="designs">Two designs for one device</h2>
+    <p>Both designs use the same chip stack (Fig. 1a). Gold resonators sit on a sapphire chip. The crystal flake is held a few tens of nanometres above them on a second sapphire chip, with spacer pillars setting the gap. Light enters through the top chip.</p>
+    <ul>
+      <li><strong>Split ring (SRR):</strong> an array of gold rings, each with one gap (Fig. 1b). Simple and well understood, with a sharp resonance that tolerates a larger gap to the crystal.</li>
+      <li><strong>Slot ring (CSRR):</strong> the inverse pattern, slots cut into a gold sheet (Fig. 1c). This is the design used in landmark vacuum-field experiments. It places more of its field in the crystal but needs a smaller gap.</li>
+    </ul>
   </section>
+
+  <div class="figs">
+  <figure class="fig">
+    <img src="images/device_layout.png" alt="Side view of the device stack: sapphire chip, gold resonators, air gap, hBN, NbOCl2 flake, sapphire carrier, with spacer pillars. Top views of the split-ring and slot-ring arrays to scale." loading="lazy">
+    <figcaption><b>Figure 1.</b> The device. (a) Layer stack, not to scale. (b, c) The two resonator arrays, drawn to scale. Each chip will carry arrays in several ring sizes, to tune the resonance across the crystal frequency.</figcaption>
+  </figure>
 
   <figure class="fig">
     <img src="images/two_designs.png" alt="Top views of the split ring and the slot ring, with the electric field shown in blue over the gold, and their transmission spectra; both dip or peak at the 4.8 THz target." loading="lazy">
-    <figcaption><b>Figure 1.</b> The two designs. (a, b) Electric field (darker blue is stronger) over each gold pattern at resonance: the split ring concentrates it in its single gap; the slot ring spreads it along its slots. (c) Both resonate at the 4.8 THz target.</figcaption>
+    <figcaption><b>Figure 2.</b> Simulated resonances. (a, b) Electric field (darker blue is stronger) at resonance. The split ring concentrates it in its gap; the slot ring spreads it along its slots. (c) Both resonate at the 4.8 THz target.</figcaption>
   </figure>
+
+  </div>
 
   <section class="block" aria-labelledby="outcome">
     <h2 id="outcome">What we found</h2>
     <ul>
-      <li><strong>Put the crystal over the gap (Fig. 2a).</strong> On the split ring, the same piece of crystal shifts the resonance about ten times more when it sits over the gap (88 GHz) than beside the arm (8 GHz).</li>
-      <li><strong>Silicon is a good substrate choice (Fig. 2b).</strong> Versus sapphire, silicon needs a ~4% smaller pattern, keeps the same resonance sharpness, and weakens the coupling by only ~3–4%. GaAs is the weakest option.</li>
-      <li><strong>The slot ring reaches the crystal more.</strong> It places 12.5% of its field in the crystal region on sapphire, against 10.5% for the split ring.</li>
+      <li><strong>Both designs hit the target.</strong> Sized for the real substrate, they resonate at 4.8 THz (Fig. 2c).</li>
+      <li><strong>The crystal splits each resonance in two.</strong> In first simulations with NbOCl₂ added, the split is about 0.3 THz for the split ring and 0.5 THz for the slot ring. This is the signature of light and crystal mixing, and it agrees with an independent estimate. A confirmation run is under way.</li>
+      <li><strong>The slot ring reaches the crystal more.</strong> It puts 12.5% of its field in the crystal region, against 10.5% for the split ring.</li>
+      <li><strong>The substrate matters but is manageable.</strong> On silicon instead of sapphire, the pattern must be about 4% smaller and the coupling is about 3–4% weaker. GaAs is the weakest choice.</li>
     </ul>
   </section>
 
-  <figure class="fig">
-    <img src="images/placement_and_substrate.png" alt="Left: resonance shift of 88 GHz with the crystal over the gap versus 8 GHz beside the arm. Right: field in the crystal region for both designs on sapphire, silicon and GaAs; sapphire highest." loading="lazy">
-    <figcaption><b>Figure 2.</b> (a) Resonance shift caused by the same small, higher-index patch placed over the gap or beside the arm of the split ring. (b) Share of the electric field inside the crystal region for both designs, each resized to 4.8 THz on three substrates.</figcaption>
-  </figure>
+  <section class="block" aria-labelledby="checks">
+    <h2 id="checks">How we check the simulations</h2>
+    <table class="checks">
+      <thead><tr><th>Check</th><th>Reference</th><th>Simulation</th></tr></thead>
+      <tbody>
+        <tr><td>Published split-ring array (Withayachumnankul et al., Opt. Express 2012)</td><td>0.407 THz</td><td>0.412 THz (+1.2%)</td></tr>
+        <tr><td>Exact law: a pattern and its inverse transmit complementary amounts (Babinet)</td><td>sum = 1</td><td>holds to within 1% away from resonance; resonances agree within 0.4%</td></tr>
+        <tr><td>Light through 13 substrate and layer materials</td><td>exact thin-film theory</td><td>agrees to better than 0.001%</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Comparisons with further published devices are in progress.</p>
+  </section>
 
   <section class="block" aria-labelledby="plan">
     <h2 id="plan">Next steps</h2>
     <ol>
-      <li>Add the NbOCl₂ crystal and its ferron to both designs and compute the coupling strength.</li>
-      <li>Choose between the split ring and the slot ring, and provide fabrication dimensions.</li>
-      <li>Fabricate and measure, and compare with the simulations.</li>
+      <li>Simulate the full stack for both designs, from crystal contact out to a 300 nm gap, in reflection as measured. This sets the pillar height.</li>
+      <li>Confirm the coupling by tuning the crystal frequency through the resonance.</li>
+      <li>Choose the design and provide fabrication dimensions, then fabricate and measure.</li>
     </ol>
   </section>
 
