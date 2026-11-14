@@ -115,7 +115,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
 
   <dl class="glance" aria-label="At a glance">
     <dt>Goal</dt><dd>Couple terahertz light strongly to the NbOCl₂ crystal at 4.8 THz, using a resonator chip we can build and measure.</dd>
-    <dt>Status</dt><dd>Two resonator designs sized to 4.8 THz and checked against published data. First crystal-plus-resonator simulations show the expected splitting. Device stack defined.</dd>
+    <dt>Status</dt><dd>Two resonator designs sized to 4.8 THz and checked against published data. Crystal-plus-resonator simulations show the expected mode splitting. Device stack defined.</dd>
     <dt>Next</dt><dd>Simulate the full stack versus the resonator–crystal gap, confirm the coupling, and fix fabrication dimensions.</dd>
   </dl>
 
@@ -145,7 +145,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
     <h2 id="outcome">What we found</h2>
     <ul>
       <li><strong>Both designs hit the target.</strong> Sized for the real substrate, they resonate at 4.8 THz (Fig. 2c).</li>
-      <li><strong>The crystal splits each resonance in two.</strong> In first simulations with NbOCl₂ added, the split is about 0.3 THz for the split ring and 0.5 THz for the slot ring. This is the signature of light and crystal mixing, and it agrees with an independent estimate. A confirmation run is under way.</li>
+      <li><strong>The crystal splits each resonance in two.</strong> With NbOCl₂ added, the split is about 0.3 THz for the split ring and 0.5 THz for the slot ring. As the crystal frequency is tuned in the simulation, the two peaks push apart instead of crossing. That is the hallmark of light and crystal mixing. A precise coupling value needs a more complete model, now in progress.</li>
       <li><strong>The slot ring reaches the crystal more.</strong> It puts 12.5% of its field in the crystal region, against 10.5% for the split ring.</li>
       <li><strong>The substrate matters but is manageable.</strong> On silicon instead of sapphire, the pattern must be about 4% smaller and the coupling is about 3–4% weaker. GaAs is the weakest choice.</li>
     </ul>
@@ -157,6 +157,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
       <thead><tr><th>Check</th><th>Reference</th><th>Simulation</th></tr></thead>
       <tbody>
         <tr><td>Published split-ring array (Withayachumnankul et al., Opt. Express 2012)</td><td>0.407 THz</td><td>0.412 THz (+1.2%)</td></tr>
+        <tr><td>Published slot-array screen (Ludvig-Osipov et al., IEEE Trans. Antennas Propag. 2020)</td><td>transmission band centre and width</td><td>within 0.2% and 0.4%</td></tr>
         <tr><td>Exact law: a pattern and its inverse transmit complementary amounts (Babinet)</td><td>sum = 1</td><td>holds to within 1% away from resonance; resonances agree within 0.4%</td></tr>
         <tr><td>Light through 13 substrate and layer materials</td><td>exact thin-film theory</td><td>agrees to better than 0.001%</td></tr>
       </tbody>
