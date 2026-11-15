@@ -148,9 +148,9 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
 
   <section class="block" aria-labelledby="arrays">
     <h2 id="arrays">Why arrays, and what a measurement sees</h2>
-    <p>One ring is about 4 µm across, while the light has a wavelength of 62 µm. A single ring would barely affect the beam. So each design is a grid of identical rings (Fig. 1b, c) that resonate together and act as one patterned surface, as in the published terahertz experiments [4–6]. The simulations model one ring with repeating boundaries (an infinite grid), with spacing well below the wavelength in sapphire so no light scatters sideways. The chip carries a ladder of windows, each with one ring size, to tune the resonance across the crystal frequency.</p>
+    <p>One ring is about 4 µm across, while the light has a wavelength of 62 µm. A single ring would barely affect the beam. So each design is a grid of identical rings (Fig. 1b, c) that resonate together and act as one patterned surface, as in the published terahertz experiments [4–6]. The simulations model one ring with repeating boundaries (an infinite grid), with spacing well below the wavelength in sapphire so no light scatters sideways. The first test will use <strong>a single array</strong> of one ring size, matched to the ferron, which keeps the measurement simple to interpret. A ladder of arrays in several ring sizes, tuning the resonance across the crystal frequency, is the follow-up if needed.</p>
         <ul>
-      <li><strong>A real terahertz measurement averages over the whole window (Fig. 3a).</strong> The terahertz spot is larger than a 70 µm window, and a flake usually covers only part of the array. The signal therefore mixes rings with crystal, rings without crystal, and the window edges. Separating the coupled signal will need reference windows (bare rings, flake only, empty window) and a model of how the regions add. Regions smaller than a wavelength add as fields rather than as intensities, so this averaging is not simple. We will simulate a finite flake over a finite array to check it.</li>
+      <li><strong>A real terahertz measurement averages over the whole window (Fig. 3a).</strong> The terahertz spot is typically larger than an array window, and a flake usually covers only part of the array. The signal therefore mixes rings with crystal, rings without crystal, and the window edges. Separating the coupled signal will need reference measurements (bare rings, flake only, empty window) and a model of how the regions add. Regions smaller than a wavelength add as fields rather than as intensities, so this averaging is not simple. We will simulate a finite flake over a finite array to check it.</li>
       <li><strong>Laser measurements probe locally.</strong> A 10–15 µm laser spot sees only a few rings under the flake (Fig. 3b), so it tests the local coupling directly. Those rings still sit inside the larger array.</li>
     </ul>
   </section>
@@ -184,7 +184,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
     <ol>
       <li>Simulate the full stack for both designs at gaps of 0–300 nm, in reflection, to set the pillar height and the final ring sizes.</li>
       <li>Pin down the coupling strength with a complete light–crystal model.</li>
-      <li>Model a finite flake on a finite array, to plan how the coupled signal is extracted from a real measurement.</li>
+      <li>Model a finite flake on a finite array, to plan how the coupled signal is extracted. Start with one array; add a ladder of ring sizes only if needed, since every extra array makes the averaging harder to untangle.</li>
       <li>Choose the design, provide fabrication dimensions, fabricate and measure.</li>
     </ol>
   </section>
