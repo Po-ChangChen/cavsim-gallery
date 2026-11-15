@@ -83,6 +83,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
 .checks th,.checks td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
 .checks th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .note{color:var(--muted);font-size:13px}
+.refs ol{font-size:13px;color:var(--muted)}
 @media print{
   :root{--bg:#fff;--fg:#111;--muted:#444;--line:#ccc}
   body{font-size:9.2pt;line-height:1.32}
@@ -92,15 +93,17 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
   h1{font-size:17pt} .block h2{font-size:12pt} .block{gap:4px} .block ul,.block ol{gap:3px}
   .figs{flex-direction:row;gap:12px;align-items:flex-start}
   .fig{flex:1 1 0;break-inside:avoid;gap:4px}
-  .fig img{border:none;width:92%;margin:0 auto}
+  .fig img{border:none;width:70%;margin:0 auto}
+  .fig.narrow img{width:44%}
   .lede{font-size:10pt}
   .glance{padding:6px 10px;gap:2px 12px;background:none}
   .glance dt{font-size:7.5pt}
   .summary{gap:6px}
   .fig figcaption{max-width:none}
   .fig figcaption{font-size:8.5pt}
+  .refs ol{font-size:7.5pt;gap:1px;display:block;columns:2;column-gap:18px} .refs li{margin-bottom:1px} .fig{margin:2px 0}
   .checks{font-size:8.5pt} .checks th,.checks td{padding:2px 5px} .note{font-size:8pt}
-  @page{size:letter;margin:0.45in}
+  @page{size:letter;margin:0.4in}
 }
 </style>
 </head>
@@ -114,50 +117,62 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
   </header>
 
   <dl class="glance" aria-label="At a glance">
-    <dt>Goal</dt><dd>Couple terahertz light strongly to the NbOCl₂ crystal at 4.8 THz, using a resonator chip we can build and measure.</dd>
-    <dt>Status</dt><dd>Two resonator designs sized to 4.8 THz and checked against published data. Crystal-plus-resonator simulations show the expected mode splitting. Device stack defined.</dd>
-    <dt>Next</dt><dd>Simulate the full stack versus gap, pin down the coupling, and fix fabrication dimensions.</dd>
+    <dt>Goal</dt><dd>Couple terahertz light strongly to the 4.8 THz ferron of NbOCl₂, using a resonator chip we can build and measure.</dd>
+    <dt>Status</dt><dd>Two resonator designs sized to 4.8 THz and benchmarked against published results. Simulations with the crystal show the expected coupled modes. Device stack defined.</dd>
+    <dt>Next</dt><dd>Simulate the full stack versus gap, pin down the coupling strength, and fix fabrication dimensions.</dd>
   </dl>
 
   <section class="block" aria-labelledby="designs">
     <h2 id="designs">Two designs for one device</h2>
-    <p>Both designs use the same chip stack (Fig. 1a). Gold resonators sit on a sapphire chip. The crystal flake is held a few tens of nanometres above them on a second sapphire chip, with spacer pillars setting the gap. Light enters through the top chip.</p>
+    <p>NbOCl₂ has a polar lattice vibration (the ferron) at 4.8 THz, seen in its terahertz emission and absorption [1, 2]. We want a resonator whose own terahertz field mixes strongly with this vibration, forming coupled light–matter modes (polaritons) [3]. Both designs use the same chip stack (Fig. 1a). Gold resonators sit on a sapphire chip, and the crystal flake is held a few tens of nanometres above them on a second sapphire chip, with spacer pillars setting the gap. Light enters through the top chip.</p>
     <ul>
-      <li><strong>Split ring (SRR):</strong> an array of gold rings, each with one gap (Fig. 1b). Simple and well understood, with a sharp resonance that tolerates a larger gap to the crystal.</li>
-      <li><strong>Slot ring (CSRR):</strong> the inverse pattern, slots cut into a gold sheet (Fig. 1c). This is the design used in landmark vacuum-field experiments. It places more of its field in the crystal but needs a smaller gap.</li>
+      <li><strong>Split ring (SRR):</strong> gold rings, each with one gap (Fig. 1b). Simple and well understood [4], with a sharp resonance that tolerates a larger gap to the crystal.</li>
+      <li><strong>Slot ring (CSRR):</strong> the inverse pattern, slots cut into a gold sheet (Fig. 1c). This is the resonator type used in landmark vacuum-field experiments [5–7]. It places more of its field in the crystal but needs a smaller gap.</li>
     </ul>
   </section>
 
-  <div class="figs">
   <figure class="fig">
     <img src="images/device_layout.png" alt="Side view of the device stack: sapphire chip, gold resonators, air gap, hBN, NbOCl2 flake, sapphire carrier, with spacer pillars. Top views of the split-ring and slot-ring arrays to scale." loading="lazy">
-    <figcaption><b>Figure 1.</b> The device. (a) Layer stack, not to scale. (b, c) The two resonator arrays, drawn to scale. Each chip will carry arrays in several ring sizes, to tune the resonance across the crystal frequency.</figcaption>
+    <figcaption><b>Figure 1.</b> The device. (a) Layer stack, not to scale. (b, c) The two resonator arrays, drawn to scale over the same 30 µm field of view.</figcaption>
   </figure>
-
-  <figure class="fig">
-    <img src="images/coupling.png" alt="Transmission of the split ring and slot ring with and without the NbOCl2 ferron: each resonance splits in two. Right: mode frequencies versus crystal frequency, showing the two modes repel instead of crossing." loading="lazy">
-    <figcaption><b>Figure 2.</b> Adding the crystal. (a, b) Without the ferron (dashed), each design resonates at the 4.8 THz target. With it (solid), the resonance splits in two. (c) Tuning the crystal frequency, the two modes repel instead of crossing.</figcaption>
-  </figure>
-  </div>
 
   <section class="block" aria-labelledby="outcome">
     <h2 id="outcome">What we found</h2>
     <ul>
-      <li><strong>Both designs hit the target.</strong> Sized for the real substrate, they resonate at 4.8 THz (Fig. 2a, b, dashed).</li>
-      <li><strong>The crystal splits each resonance in two (Fig. 2).</strong> The split is about 0.3 THz (split ring) and 0.5 THz (slot ring), and the modes repel as the crystal is tuned: the hallmark of light–crystal coupling. A precise coupling value needs a more complete model, in progress.</li>
-      <li><strong>The slot ring reaches the crystal more.</strong> It puts 12.5% of its field in the crystal region, against 10.5% for the split ring.</li>
-      <li><strong>The substrate matters but is manageable.</strong> On silicon instead of sapphire, the pattern must be about 4% smaller and the coupling is about 3–4% weaker. GaAs is the weakest choice.</li>
+      <li><strong>Both designs hit the target.</strong> Sized for the sapphire substrate, they resonate at 4.8 THz (Fig. 2a, b, dashed).</li>
+      <li><strong>The crystal splits each resonance in two (Fig. 2).</strong> The split is about 0.3 THz for the split ring and 0.5 THz for the slot ring. When the crystal frequency is tuned in the simulation, the two modes repel instead of crossing (Fig. 2c), the hallmark of light–matter coupling [3]. The coupling is about 3% (split ring) and 6% (slot ring) of the resonance frequency. A precise value needs a more complete model, now in progress.</li>
+      <li><strong>The crystal's oscillator strength matters.</strong> We derived it from published absorption data [2]. It gives coupling about 40% weaker than our earlier assumption: the split ring stays above the usual strong-coupling threshold, while the slot ring is close to it and needs a gap of about 30 nm.</li>
+      <li><strong>The substrate is manageable.</strong> On silicon instead of sapphire, the pattern must be about 4% smaller and the coupling is about 3–4% weaker. GaAs is the weakest choice.</li>
     </ul>
   </section>
+
+  <section class="block" aria-labelledby="arrays">
+    <h2 id="arrays">Why arrays, and what a measurement sees</h2>
+    <p>One ring is about 4 µm across, while the light has a wavelength of 62 µm. A single ring would barely affect the beam. So each design is a grid of identical rings (Fig. 1b, c) that resonate together and act as one patterned surface, as in the published terahertz experiments [4–6]. The simulations model one ring with repeating boundaries (an infinite grid), with spacing well below the wavelength in sapphire so no light scatters sideways. The chip carries a ladder of windows, each with one ring size, to tune the resonance across the crystal frequency.</p>
+        <ul>
+      <li><strong>A real terahertz measurement averages over the whole window (Fig. 3a).</strong> The terahertz spot is larger than a 70 µm window, and a flake usually covers only part of the array. The signal therefore mixes rings with crystal, rings without crystal, and the window edges. Separating the coupled signal will need reference windows (bare rings, flake only, empty window) and a model of how the regions add. Regions smaller than a wavelength add as fields rather than as intensities, so this averaging is not simple. We will simulate a finite flake over a finite array to check it.</li>
+      <li><strong>Laser measurements probe locally.</strong> A 10–15 µm laser spot sees only a few rings under the flake (Fig. 3b), so it tests the local coupling directly. Those rings still sit inside the larger array.</li>
+    </ul>
+  </section>
+
+  <figure class="fig">
+    <img src="images/coupling.png" alt="Transmission of the split ring and slot ring with and without the NbOCl2 ferron: each resonance splits in two. Right: mode frequencies versus crystal frequency, showing the two modes repel instead of crossing." loading="lazy">
+    <figcaption><b>Figure 2.</b> Adding the crystal. (a, b) Without the ferron (dashed), each design resonates at the 4.8 THz target; with it (solid), the resonance splits in two. (c) Tuning the crystal frequency, the two modes repel instead of crossing. The crystal model is based on published data [2]; these are first, coarse-mesh results.</figcaption>
+  </figure>
+
+  <figure class="fig narrow">
+    <img src="images/measurement.png" alt="Top view to scale: a terahertz spot hundreds of micrometres wide over a 70 micrometre window of split rings partly covered by a flake; and a 10 to 15 micrometre laser spot over a few rings under the flake." loading="lazy">
+    <figcaption><b>Figure 3.</b> What each measurement sees, drawn to scale (flake outline and terahertz spot size are illustrative). (a) Terahertz light passes only through the window in the gold layer and averages over rings with and without crystal. (b) A laser spot probes a few rings under the flake.</figcaption>
+  </figure>
 
   <section class="block" aria-labelledby="checks">
     <h2 id="checks">How we check the simulations</h2>
     <table class="checks">
       <thead><tr><th>Check</th><th>Reference</th><th>Simulation</th></tr></thead>
       <tbody>
-        <tr><td>Published split-ring array (Withayachumnankul et al., Opt. Express 2012)</td><td>0.407 THz</td><td>0.412 THz (+1.2%)</td></tr>
-        <tr><td>Published slot-array screen (Ludvig-Osipov et al., IEEE Trans. Antennas Propag. 2020)</td><td>transmission band centre and width</td><td>within 0.2% and 0.4%</td></tr>
-        <tr><td>Exact law: a pattern and its inverse transmit complementary amounts (Babinet)</td><td>sum = 1</td><td>holds to within 1% away from resonance; resonances agree within 0.4%</td></tr>
+        <tr><td>Published split-ring array [4]</td><td>0.407 THz</td><td>0.412 THz (+1.2%)</td></tr>
+        <tr><td>Published slot-array screen [8]</td><td>transmission band centre and width</td><td>within 0.2% and 0.4%</td></tr>
+        <tr><td>Exact law: a pattern and its inverse transmit complementary amounts (Babinet) [9]</td><td>sum = 1</td><td>holds to within 1% away from resonance; resonances agree within 0.4%</td></tr>
         <tr><td>Light through 13 substrate and layer materials</td><td>exact thin-film theory</td><td>agrees to better than 0.001%</td></tr>
       </tbody>
     </table>
@@ -167,9 +182,25 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
   <section class="block" aria-labelledby="plan">
     <h2 id="plan">Next steps</h2>
     <ol>
-      <li>Simulate the full stack for both designs at gaps of 0–300 nm, in reflection, to set the pillar height.</li>
+      <li>Simulate the full stack for both designs at gaps of 0–300 nm, in reflection, to set the pillar height and the final ring sizes.</li>
       <li>Pin down the coupling strength with a complete light–crystal model.</li>
-      <li>Choose the design and provide fabrication dimensions, then fabricate and measure.</li>
+      <li>Model a finite flake on a finite array, to plan how the coupled signal is extracted from a real measurement.</li>
+      <li>Choose the design, provide fabrication dimensions, fabricate and measure.</li>
+    </ol>
+  </section>
+
+  <section class="block refs" aria-labelledby="refs">
+    <h2 id="refs">References</h2>
+    <ol>
+      <li>Zhang et al., <i>Nature Physics</i> 22, 1624 (2026).</li>
+      <li>Huang et al., arXiv:2512.06139 (2025).</li>
+      <li>A. Frisk Kockum et al., <i>Nature Reviews Physics</i> 1, 19 (2019).</li>
+      <li>W. Withayachumnankul et al., <i>Optics Express</i> 20, 3345 (2012).</li>
+      <li>G. Scalari et al., <i>Science</i> 335, 1323 (2012).</li>
+      <li>C. Maissen et al., <i>Phys. Rev. B</i> 90, 205309 (2014).</li>
+      <li>F. Appugliese et al., <i>Science</i> 375, 1030 (2022).</li>
+      <li>A. Ludvig-Osipov et al., <i>IEEE Trans. Antennas Propag.</i> 68, 773 (2020).</li>
+      <li>M. Born and E. Wolf, <i>Principles of Optics</i> (Cambridge University Press), Babinet’s principle.</li>
     </ol>
   </section>
 
