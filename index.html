@@ -94,7 +94,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
   .figs{flex-direction:row;gap:12px;align-items:flex-start}
   .fig{flex:1 1 0;break-inside:avoid;gap:4px}
   .fig img{border:none;width:70%;margin:0 auto}
-  .fig.narrow img{width:44%}
+  .fig.narrow img{width:41%}
   .lede{font-size:10pt}
   .glance{padding:6px 10px;gap:2px 12px;background:none}
   .glance dt{font-size:7.5pt}
@@ -139,7 +139,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
   <section class="block" aria-labelledby="outcome">
     <h2 id="outcome">What we found</h2>
     <ul>
-      <li><strong>Both designs hit the target.</strong> Sized for the sapphire substrate, they resonate at 4.8 THz (Fig. 2a, b, dashed).</li>
+      <li><strong>Both designs hit the target.</strong> Resized for the full stack: split ring 3.51 µm on a 9.12 µm period, slot ring 3.57 µm on a 4.95 µm period, both within 1% of the ferron.</li>
       <li><strong>The crystal splits each resonance in two (Fig. 2).</strong> The split is about 0.3 THz for the split ring and 0.5 THz for the slot ring. When the crystal frequency is tuned in the simulation, the two modes repel instead of crossing (Fig. 2c), the hallmark of light–matter coupling [3]. The coupling is about 3% (split ring) and 6% (slot ring) of the resonance frequency. A precise value needs a more complete model, now in progress.</li>
       <li><strong>The crystal's oscillator strength matters.</strong> We derived it from published absorption data [2]. It gives coupling about 40% weaker than our earlier assumption: the split ring stays above the usual strong-coupling threshold, while the slot ring is close to it and needs a gap of about 30 nm.</li>
       <li><strong>The substrate is manageable.</strong> On silicon instead of sapphire, the pattern must be about 4% smaller and the coupling is about 3–4% weaker. GaAs is the weakest choice.</li>
@@ -184,7 +184,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
     <ol>
       <li>Simulate the full stack for both designs at gaps of 0–300 nm, in reflection, to set the pillar height and the final ring sizes.</li>
       <li>Pin down the coupling strength with a complete light–crystal model.</li>
-      <li>Model a finite flake on a finite array, to plan how the coupled signal is extracted. Start with one array; add a ladder of ring sizes only if needed, since every extra array makes the averaging harder to untangle.</li>
+      <li>Model a finite flake on a finite array, to plan how the coupled signal is extracted.</li>
       <li>Choose the design, provide fabrication dimensions, fabricate and measure.</li>
     </ol>
   </section>
@@ -200,7 +200,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
       <li>C. Maissen et al., <i>Phys. Rev. B</i> 90, 205309 (2014).</li>
       <li>F. Appugliese et al., <i>Science</i> 375, 1030 (2022).</li>
       <li>A. Ludvig-Osipov et al., <i>IEEE Trans. Antennas Propag.</i> 68, 773 (2020).</li>
-      <li>M. Born and E. Wolf, <i>Principles of Optics</i> (Cambridge University Press), Babinet’s principle.</li>
+      <li>M. Born and E. Wolf, <i>Principles of Optics</i> (Cambridge Univ. Press).</li>
     </ol>
   </section>
 
