@@ -93,7 +93,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
   h1{font-size:17pt} .block h2{font-size:12pt} .block{gap:4px} .block ul,.block ol{gap:3px}
   .figs{flex-direction:row;gap:12px;align-items:flex-start}
   .fig{flex:1 1 0;break-inside:avoid;gap:4px}
-  .fig img{border:none;width:70%;margin:0 auto}
+  .fig img{border:none;width:66%;margin:0 auto}
   .fig.narrow img{width:41%}
   .lede{font-size:10pt}
   .glance{padding:6px 10px;gap:2px 12px;background:none}
@@ -126,8 +126,8 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
     <h2 id="designs">Two designs for one device</h2>
     <p>NbOCl₂ has a polar lattice vibration (the ferron) at 4.8 THz, seen in its terahertz emission and absorption [1, 2]. We want a resonator whose own terahertz field mixes strongly with this vibration, forming coupled light–matter modes (polaritons) [3]. Both designs use the same chip stack (Fig. 1a). Gold resonators sit on a sapphire chip, and the crystal flake is held a few tens of nanometres above them on a second sapphire chip, with spacer pillars setting the gap. Light enters through the top chip.</p>
     <ul>
-      <li><strong>Split ring (SRR):</strong> gold rings, each with one gap (Fig. 1b). Simple and well understood [4], with a sharp resonance that tolerates a larger gap to the crystal.</li>
-      <li><strong>Slot ring (CSRR):</strong> the inverse pattern, slots cut into a gold sheet (Fig. 1c). This is the resonator type used in landmark vacuum-field experiments [5–7]. It places more of its field in the crystal but needs a smaller gap.</li>
+      <li><strong>Split ring (SRR), the device-type design:</strong> gold rings, each with one gap (Fig. 1b) [4, 5]. Easier to build and measure: the surface is mostly open to laser beams and its sharp resonance tolerates a larger gap; its field is harder to model.</li>
+      <li><strong>Slot ring (CSRR), the physics-type design:</strong> the inverse pattern, slots cut into a gold sheet (Fig. 1c), copied from landmark vacuum-field experiments [6, 7]. One clean field region and more field in the crystal, but mostly gold and it needs a gap of a few tens of nanometres.</li>
     </ul>
   </section>
 
@@ -142,7 +142,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
       <li><strong>Both designs hit the target.</strong> Resized for the full stack: split ring 3.51 µm on a 9.12 µm period, slot ring 3.57 µm on a 4.95 µm period, both within 1% of the ferron.</li>
       <li><strong>The crystal splits each resonance in two (Fig. 2).</strong> The split is about 0.3 THz for the split ring and 0.5 THz for the slot ring. When the crystal frequency is tuned in the simulation, the two modes repel instead of crossing (Fig. 2c), the hallmark of light–matter coupling [3]. The coupling is about 3% (split ring) and 6% (slot ring) of the resonance frequency. A precise value needs a more complete model, now in progress.</li>
       <li><strong>The crystal's oscillator strength matters.</strong> We derived it from published absorption data [2]. It gives coupling about 40% weaker than our earlier assumption: the split ring stays above the usual strong-coupling threshold, while the slot ring is close to it and needs a gap of about 30 nm.</li>
-      <li><strong>The substrate is manageable.</strong> On silicon instead of sapphire, the pattern must be about 4% smaller and the coupling is about 3–4% weaker. GaAs is the weakest choice.</li>
+      <li><strong>Sapphire is the substrate.</strong> Silicon costs only 3–4% of the coupling, but it and GaAs turn conductive under the laser pump and would short the resonators.</li>
     </ul>
   </section>
 
@@ -150,7 +150,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
     <h2 id="arrays">Why arrays, and what a measurement sees</h2>
     <p>One ring is about 4 µm across, while the light has a wavelength of 62 µm. A single ring would barely affect the beam. So each design is a grid of identical rings (Fig. 1b, c) that resonate together and act as one patterned surface, as in the published terahertz experiments [4–6]. The simulations model one ring with repeating boundaries (an infinite grid), with spacing well below the wavelength in sapphire so no light scatters sideways. The first test will use <strong>a single array</strong> of one ring size, matched to the ferron, which keeps the measurement simple to interpret. A ladder of arrays in several ring sizes, tuning the resonance across the crystal frequency, is the follow-up if needed.</p>
         <ul>
-      <li><strong>A real terahertz measurement averages over the whole window (Fig. 3a).</strong> The terahertz spot is typically larger than an array window, and a flake usually covers only part of the array. The signal therefore mixes rings with crystal, rings without crystal, and the window edges. Separating the coupled signal will need reference measurements (bare rings, flake only, empty window) and a model of how the regions add. Regions smaller than a wavelength add as fields rather than as intensities, so this averaging is not simple. We will simulate a finite flake over a finite array to check it.</li>
+      <li><strong>A real terahertz measurement averages over the whole window (Fig. 3a).</strong> The terahertz spot (estimated 200–300 µm) is larger than an array window, and a flake usually covers only part of the array. The signal therefore mixes rings with crystal, rings without crystal, and the window edges. Separating the coupled signal will need reference measurements (bare rings, flake only, empty window) and a model of how the regions add. Regions smaller than a wavelength add as fields rather than as intensities, so this averaging is not simple. We will simulate a finite flake over a finite array to check it.</li>
       <li><strong>Laser measurements probe locally.</strong> A 10–15 µm laser spot sees only a few rings under the flake (Fig. 3b), so it tests the local coupling directly. Those rings still sit inside the larger array.</li>
     </ul>
   </section>
@@ -162,7 +162,7 @@ a:focus-visible,video:focus-visible{outline:2px solid var(--gold);outline-offset
 
   <figure class="fig narrow">
     <img src="images/measurement.png" alt="Top view to scale: a terahertz spot hundreds of micrometres wide over a 70 micrometre window of split rings partly covered by a flake; and a 10 to 15 micrometre laser spot over a few rings under the flake." loading="lazy">
-    <figcaption><b>Figure 3.</b> What each measurement sees, drawn to scale (flake outline and terahertz spot size are illustrative). (a) Terahertz light passes only through the window in the gold layer and averages over rings with and without crystal. (b) A laser spot probes a few rings under the flake.</figcaption>
+    <figcaption><b>Figure 3.</b> What each measurement sees, drawn to scale (flake outline illustrative; terahertz spot size estimated). (a) Terahertz light passes only through the window in the gold layer and averages over rings with and without crystal. (b) A laser spot probes a few rings under the flake.</figcaption>
   </figure>
 
   <section class="block" aria-labelledby="checks">
